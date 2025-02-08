@@ -40,6 +40,8 @@ class Config:
         self.SQLALCHEMY_TRACK_MODIFICATIONS = False
         logger.info(f"数据库连接 URL: {self.SQLALCHEMY_DATABASE_URI}")
 
+# 这行确保 gunicorn 可以找到 app 实例
+app = create_app()
+
 if __name__ == "__main__":
-    app = create_app()
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
